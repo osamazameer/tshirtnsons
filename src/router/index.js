@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CompaniesView from "../views/CompaniesView.vue";
+import ContactsView from "../views/ContactsView.vue";
+import AddContact from "../views/AddContact.vue";
 
 const routes = [
   {
@@ -16,8 +18,12 @@ const routes = [
   {
     path: "/contacts",
     name: "contacts",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ContactsView.vue"),
+    component: ContactsView,
+  },
+  {
+    path: "/add-contact",
+    name: "addcontact",
+    component: AddContact,
   },
 ];
 

@@ -18,9 +18,11 @@ export default {
     // eslint-disable-next-line
     let companies = ref([]);
     const getCompanies = async () => {
-      let res = await axios.get("https://dummyjson.com/products");
-      companies.value = res.data.products;
-      // console.log("CHECK COMPANIES ==> ", res.data.products);
+      let res = await axios.get(
+        "https://ui-test.tshirtandsons.com/api/contacts"
+      );
+      companies.value = res.data.data;
+      console.log("CHECK COMPANIES ==> ", res.data.data);
     };
     onMounted(() => {
       getCompanies();
