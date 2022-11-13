@@ -65,8 +65,8 @@
               :class="currentPage === page && 'border-indigo-500'"
               @click="handlePageChange(page)"
               v-if="
-                Number(page) < Number(currentPage + 3) &&
-                Number(page) > Number(currentPage - 3)
+                Number(page) < Number(currentPage + 5) &&
+                Number(page) > Number(currentPage - 5)
               "
             >
               <span>
