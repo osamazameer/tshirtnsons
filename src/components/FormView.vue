@@ -1,4 +1,5 @@
 <template>
+  <ModalComponent :active="active" :page="page" />
   <form class="w-full max-w-4xl m-auto pt-4" @submit.prevent="onSubmit">
     <div class="max-w-4xl bg-white py-2 px-5 m-auto w-full mt-10">
       <div class="text-3xl mb-6 text-center">
@@ -122,9 +123,14 @@
 <script>
 import { watch, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import ModalComponent from "@/components/Common/ModalComponent.vue";
 import axios from "axios";
 
 export default {
+  components: {
+    ModalComponent,
+  },
+
   props: {
     contact: Object,
     check: String,
@@ -135,6 +141,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const id = route.params.id;
+    const active = ref(false);
 
     let form = ref({
       first_name: "",
@@ -151,6 +158,9 @@ export default {
       console.log("value changeed on props", value.contact.data);
       form.value = value.contact.data;
     });
+    function Check() {
+      router.push({ name: "contacts" });
+    }
 
     const onSubmit = async () => {
       console.log("Form Values", form);
@@ -165,13 +175,15 @@ export default {
           form.value
         );
       }
-      await router.push({ name: "contacts" });
+      active.value = true;
     };
 
     return {
       form,
       props,
+      active,
       onSubmit,
+      Check,
     };
   },
 };
