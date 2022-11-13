@@ -19,13 +19,10 @@
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
       <div>
         <p class="text-sm text-gray-700">
-          Showing
-          <span class="font-medium">1</span>
-          to
-          <span class="font-medium">10</span>
+          Showing Page
+          <span class="font-medium">{{ currentPage ? currentPage : 1 }}</span>
           of
-          <span class="font-medium">97</span>
-          results
+          <span class="font-medium">{{ Number(totalPages) }}</span>
         </p>
       </div>
       <div>
@@ -84,19 +81,17 @@
             ...
           </span>
           <a
-            href="#"
             aria-current="page"
-            class="relative z-10 inline-flex items-center border bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20"
-            v-if="currentPage !== totalPages"
+            class="relative z-10 inline-flex cursor-pointer items-center border bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20"
             :class="isActive && 'border-indigo-500'"
-            @click="handlePageChange(page)"
+            @click="handlePageChange(totalPages)"
+            v-if="currentPage !== totalPages"
           >
             <span>
               {{ totalPages }}
             </span>
           </a>
           <a
-            href="#"
             @click="nextPage"
             class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
           >
