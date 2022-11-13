@@ -1,5 +1,6 @@
 <template>
   <form class="w-full max-w-lg m-auto pt-4" @submit.prevent="onSubmit">
+    <h1 class="my-4 text-xl font-bold">Add Contact</h1>
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label
@@ -88,10 +89,11 @@
           placeholder="Enter your complete address"
         />
         <p class="text-gray-600 text-xs italic">
-          Make it as long and as crazy as you'd like
+          Make it as long as you'd like....
         </p>
       </div>
     </div>
+
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full px-3">
         <label
@@ -165,7 +167,7 @@
     <div class="w-full m-auto">
       <button
         type="submit"
-        class="mt-4 mb-4 bg-transparent hover:bg-blue-500 text-white-100 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        class="mt-4 mb-4 bg-transparent hover:bg-black text-white-100 font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
       >
         Save
       </button>

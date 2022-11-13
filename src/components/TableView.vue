@@ -2,6 +2,16 @@
   <div class="container mx-auto">
     <div>
       <div class="mt-4 overflow-x-auto relative">
+        <div class="">
+          <h1 class="float-left text-xl mt-2">Contacts</h1>
+          <router-link to="/add-contact">
+            <button
+              class="bg-blue-500 mb-2 hover:bg-blue-400 float-right text-white py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+            >
+              Add Contact
+            </button>
+          </router-link>
+        </div>
         <table
           class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
         >
@@ -31,11 +41,13 @@
               <td class="py-4 px-6">{{ contact.country_code }}</td>
               <td class="py-4 px-6">{{ contact.town_city }}</td>
               <td class="py-4 px-6">
-                <button
-                  class="bg-transparent hover:bg-blue-500 text-white-100 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                >
-                  View
-                </button>
+                <router-link to="/add-contact">
+                  <button
+                    class="bg-transparent hover:bg-blue-500 text-white-100 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                  >
+                    View Contact
+                  </button>
+                </router-link>
               </td>
             </tr>
           </tbody>
