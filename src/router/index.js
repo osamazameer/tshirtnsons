@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import CompaniesView from "../views/CompaniesView.vue";
 import ContactsView from "../views/ContactsView.vue";
 import AddContact from "../views/AddContact.vue";
+import EditContact from "../views/EditContact.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/add-contact",
     name: "addcontact",
     component: AddContact,
+  },
+  {
+    path: "/edit-contact/:id",
+    name: "editcontact",
+    component: EditContact,
   },
 ];
 

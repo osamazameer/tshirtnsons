@@ -41,7 +41,7 @@
               <td class="py-4 px-6">{{ contact.country_code }}</td>
               <td class="py-4 px-6">{{ contact.town_city }}</td>
               <td class="py-4 px-6">
-                <router-link to="/add-contact">
+                <router-link :to="`/edit-contact/${contact.id}`">
                   <button
                     class="bg-transparent hover:bg-blue-500 text-white-100 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                   >

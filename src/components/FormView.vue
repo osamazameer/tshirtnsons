@@ -1,194 +1,142 @@
 <template>
-  <form class="w-full max-w-lg m-auto pt-4" @submit.prevent="onSubmit">
-    <h1 class="my-4 text-xl font-bold">Add Contact</h1>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="first-name"
-        >
-          First Name
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-          id="first-name"
-          name="first-name"
-          v-model="form.first_name"
-          type="text"
-          placeholder="First Name"
-        />
-        <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
-      </div>
-      <div class="w-full md:w-1/2 px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="last-name"
-        >
-          Last Name
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="last-name"
-          name="last-name"
-          v-model="form.last_name"
-          type="text"
-          placeholder="Last Name"
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="phone"
-        >
-          Phone
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="phone"
-          name="phone"
-          v-model="form.phone"
-          type="tel"
-          placeholder="Enter Phone No."
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="email"
-        >
-          Email
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="email"
-          name="email"
-          v-model="form.email"
-          type="email"
-          placeholder="Enter your email"
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="address"
-        >
-          Address
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="address"
-          name="address"
-          v-model="form.address"
-          type="text"
-          placeholder="Enter your complete address"
-        />
-        <p class="text-gray-600 text-xs italic">
-          Make it as long as you'd like....
-        </p>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="post_code"
-        >
-          Post Code
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="post_code"
-          name="post_code"
-          v-model="form.post_code"
-          type="text"
-          placeholder="Enter your post code"
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-2">
-      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="country_code"
-        >
-          Country
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="country_code"
-          name="country_code"
-          v-model="form.country_code"
-          type="text"
-          placeholder="Country Code"
-        />
+  <form class="w-full max-w-4xl m-auto pt-4" @submit.prevent="onSubmit">
+    <div class="max-w-4xl bg-white py-2 px-5 m-auto w-full mt-10">
+      <div class="text-3xl mb-6 text-center">
+        {{ page ? page : "Add Contact" }}
       </div>
 
-      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="town_city"
-        >
-          Town
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="town_city"
-          name="town_city"
-          v-model="form.town_city"
-          type="text"
-          placeholder="Town City"
-        />
-      </div>
+      <div class="grid grid-cols-2 gap-4 max-w-4xl m-auto">
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="first-name"
+            name="first-name"
+            v-model="form.first_name"
+            type="text"
+            placeholder="First Name"
+          />
+        </div>
 
-      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="region_county"
-        >
-          Region
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="region_county"
-          name="region_county"
-          v-model="form.region_county"
-          type="text"
-          placeholder="Region County"
-        />
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="last-name"
+            name="last-name"
+            v-model="form.last_name"
+            type="text"
+            placeholder="Last Name"
+          />
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="phone"
+            name="phone"
+            v-model="form.phone"
+            type="tel"
+            placeholder="Enter Phone No."
+          />
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="email"
+            name="email"
+            v-model="form.email"
+            type="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="col-span-2">
+          <textarea
+            cols="30"
+            rows="2"
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="address"
+            name="address"
+            v-model="form.address"
+            type="text"
+            placeholder="Enter your complete address"
+          ></textarea>
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="post_code"
+            name="post_code"
+            v-model="form.post_code"
+            type="text"
+            placeholder="Enter your post code"
+          />
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="country_code"
+            name="country_code"
+            v-model="form.country_code"
+            type="text"
+            placeholder="Country Code"
+          />
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="town_city"
+            name="town_city"
+            v-model="form.town_city"
+            type="text"
+            placeholder="Town City"
+          />
+        </div>
+
+        <div class="col-span-2 lg:col-span-1">
+          <input
+            class="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+            id="region_county"
+            name="region_county"
+            v-model="form.region_county"
+            type="text"
+            placeholder="Region County"
+          />
+        </div>
+
+        <div class="col-span-2 text-right">
+          <button
+            type="submit"
+            class="py-3 px-6 bg-black text-white font-bold w-full sm:w-32"
+          >
+            Save
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="w-full m-auto">
-      <button
-        type="submit"
-        class="mt-4 mb-4 bg-transparent hover:bg-black text-white-100 font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
-      >
-        Save
-      </button>
     </div>
   </form>
 </template>
 
 <script>
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
+import { watch, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import axios from "axios";
 
 export default {
   props: {
-    companies: Array,
+    contact: Object,
+    check: String,
+    page: String,
   },
 
   setup(props) {
     const router = useRouter();
+    const route = useRoute();
+    const id = route.params.id;
 
-    const form = reactive({
+    let form = ref({
       first_name: "",
       last_name: "",
       email: "",
@@ -199,9 +147,24 @@ export default {
       region_county: "",
       phone: "",
     });
+    watch(props, (value) => {
+      console.log("value changeed on props", value.contact.data);
+      form.value = value.contact.data;
+    });
 
     const onSubmit = async () => {
-      await axios.post("https://ui-test.tshirtandsons.com/api/contacts", form);
+      console.log("Form Values", form);
+      if (props.page == "Edit Contact") {
+        await axios.put(
+          `https://ui-test.tshirtandsons.com/api/contacts/${id}`,
+          form.value
+        );
+      } else {
+        await axios.post(
+          "https://ui-test.tshirtandsons.com/api/contacts/",
+          form.value
+        );
+      }
       await router.push({ name: "contacts" });
     };
 
