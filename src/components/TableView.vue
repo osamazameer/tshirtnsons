@@ -4,6 +4,7 @@
       <div class="mt-4 overflow-x-auto relative">
         <div class="">
           <h1 class="float-left text-2xl mt-2">Contacts</h1>
+
           <router-link to="/add-contact">
             <button
               class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
@@ -12,6 +13,35 @@
             </button>
           </router-link>
         </div>
+
+        <form @submit.prevent="onSubmit">
+          <div class="mt-4">
+            <input
+              class="border-solid border-gray-400 border-2 p-2 pl-4 md:text-xl w-full"
+              id="search"
+              name="search"
+              v-model="search"
+              type="text"
+              placeholder="Search Contact"
+            />
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 absolute right-4 cursor-pointer top-16"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
         <table
           class="w-full text-sm text-left text-black border-r-2 border-l-2 border-black dark:text-gray-400"
         >
@@ -60,14 +90,31 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import axios from "axios";
+
 export default {
   props: {
-    companies: Array,
+    // companies: Array,
     contacts: Array,
   },
-  setup(props) {
+  emits: ["SearchedValue"],
+
+  setup(props, { emit }) {
+    const search = ref("");
+    const onSubmit = async () => {
+      let getContact = await axios.get(
+        `https://ui-test.tshirtandsons.com/api/contacts?name=${search.value}`
+      );
+
+      console.log("Response ==>", getContact.data);
+      emit("SearchedValue", getContact.data);
+    };
+
     return {
+      search,
       props,
+      onSubmit,
     };
   },
 };

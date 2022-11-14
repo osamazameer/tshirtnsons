@@ -2,7 +2,7 @@
   <div class="home">
     <LoadingComponent v-if="loading" />
     <template v-else>
-      <TableView :contacts="contacts" />
+      <TableView :contacts="contacts" @SearchedValue="SearchedValue" />
       <PaginateBar
         @pageSelect="handlePageChange"
         :totalPages="totalPages"
@@ -56,6 +56,11 @@ export default {
       getContacts();
     }
 
+    function SearchedValue(val) {
+      console.log("value", val);
+      contacts.value = val.data;
+    }
+
     onMounted(() => {
       getContacts();
     });
@@ -65,6 +70,7 @@ export default {
       totalPages,
       currentPage,
       handlePageChange,
+      SearchedValue,
     };
   },
 };
