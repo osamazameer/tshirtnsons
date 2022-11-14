@@ -2,7 +2,11 @@
   <div class="home">
     <LoadingComponent v-if="loading" />
     <template v-else>
-      <TableView :contacts="contacts" @SearchedValue="SearchedValue" />
+      <TableView
+        :contacts="filteredContacts"
+        @SearchedValue="SearchedValue"
+        @on-reset="handleReset"
+      />
       <PaginateBar
         @pageSelect="handlePageChange"
         :totalPages="totalPages"
@@ -29,6 +33,7 @@ export default {
   setup() {
     // eslint-disable-next-line
     let contacts = ref([]);
+    let filteredContacts = ref([]);
     let totalPages = ref("");
     let currentPage = ref("");
     let loading = ref(true);
@@ -40,7 +45,9 @@ export default {
           `https://ui-test.tshirtandsons.com/api/contacts/collection?page=${currentPage.value}`
         );
         contacts.value = res.data.data;
-        console.log("Pages ==>", res.data.meta.last_page);
+
+        filteredContacts.value = res.data.data;
+        //Getting Total Pages
         totalPages.value = res.data.meta.last_page;
       } catch (e) {
         console.log(e);
@@ -57,9 +64,11 @@ export default {
     }
 
     function SearchedValue(val) {
-      console.log("value", val);
-      contacts.value = val.data;
+      console.log("Searched Value", val);
+      filteredContacts.value = val.data;
     }
+
+    const handleReset = () => (filteredContacts.value = contacts.value);
 
     onMounted(() => {
       getContacts();
@@ -69,8 +78,10 @@ export default {
       loading,
       totalPages,
       currentPage,
+      filteredContacts,
       handlePageChange,
       SearchedValue,
+      handleReset,
     };
   },
 };

@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import axios from "axios";
 
 export default {
@@ -110,6 +110,9 @@ export default {
       console.log("Response ==>", getContact.data);
       emit("SearchedValue", getContact.data);
     };
+    watch(search, (value) => {
+      if (!value || value === "") emit("on-reset");
+    });
 
     return {
       search,
