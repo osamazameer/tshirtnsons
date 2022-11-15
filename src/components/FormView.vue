@@ -115,7 +115,7 @@
               Back
             </button>
           </router-link>
-
+          <br class="md:hidden my-4" />
           <button
             type="submit"
             class="py-3 px-6 bg-black text-white font-bold w-full sm:w-32"

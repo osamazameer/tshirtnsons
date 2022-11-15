@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div v-if="contacts != null" class="container mx-auto">
     <div>
       <div class="mt-4 overflow-x-auto relative">
         <div class="">
@@ -85,6 +85,14 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+  <div v-else>
+    <div class="mt-8 justify-center items-center">
+      <h1 class="mt-8 text-center text-4xl">
+        We are currently working on this section!<br />
+        Sorry for the inconvinence.
+      </h1>
     </div>
   </div>
 </template>
