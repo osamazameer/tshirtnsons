@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import ContactTable from "@/components/ContactTable.vue";
-import PaginateBar from "@/components/PaginateBar.vue";
+import ContactTable from "@/components/Contacts/ContactTable.vue";
+import PaginateBar from "@/components/Common/PaginateBar.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
 import LoadingComponent from "@/components/Common/LoadingComponent.vue";

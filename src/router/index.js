@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import CompaniesView from "../views/CompaniesView.vue";
-import ContactsView from "../views/ContactsView.vue";
-import AddContact from "../views/AddContact.vue";
-import EditContact from "../views/EditContact.vue";
+import CompaniesView from "../views/companies/CompaniesView.vue";
+import ContactsView from "../views/contacts/ContactsView.vue";
+import AddContact from "../views/contacts/AddContact.vue";
+import EditContact from "../views/contacts/EditContact.vue";
 
 const routes = [
   {

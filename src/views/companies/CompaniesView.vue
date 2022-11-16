@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CompanyTable from "@/components/CompanyTable.vue";
+import CompanyTable from "@/components/Companies/CompanyTable.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
 
