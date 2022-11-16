@@ -41,7 +41,8 @@
           </div>
         </form>
       </div>
-      <div class="overflow-x-auto relative">
+
+      <div class="overflow-x-auto relative" v-if="contacts != []">
         <table
           class="w-full text-sm text-left text-black border-r-2 border-l-2 border-black dark:text-gray-400"
         >
@@ -59,6 +60,7 @@
               <th scope="col" class="py-3 px-6">Actions</th>
             </tr>
           </thead>
+
           <tbody>
             <tr
               v-for="contact in contacts"
@@ -84,6 +86,9 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div v-else>
+        <h1>No Contacts</h1>
       </div>
     </div>
   </div>

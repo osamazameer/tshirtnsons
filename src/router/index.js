@@ -4,6 +4,7 @@ import CompaniesView from "../views/companies/CompaniesView.vue";
 import ContactsView from "../views/contacts/ContactsView.vue";
 import AddContact from "../views/contacts/AddContact.vue";
 import EditContact from "../views/contacts/EditContact.vue";
+import CompanyContacts from "../views/companies/CompanyContacts.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/edit-contact/:id",
     name: "editcontact",
     component: EditContact,
+  },
+  {
+    path: "/company-contacts/:id",
+    name: "companycontacts",
+    component: CompanyContacts,
   },
 ];
 
