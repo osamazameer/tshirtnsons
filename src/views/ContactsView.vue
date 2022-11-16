@@ -2,7 +2,7 @@
   <div class="home">
     <LoadingComponent v-if="loading" />
     <template v-else>
-      <TableView
+      <ContactTable
         :contacts="filteredContacts"
         @SearchedValue="SearchedValue"
         @on-reset="handleReset"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import TableView from "@/components/TableView.vue";
+import ContactTable from "@/components/ContactTable.vue";
 import PaginateBar from "@/components/PaginateBar.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
@@ -25,7 +25,7 @@ import LoadingComponent from "@/components/Common/LoadingComponent.vue";
 
 export default {
   components: {
-    TableView,
+    ContactTable,
     PaginateBar,
     LoadingComponent,
   },

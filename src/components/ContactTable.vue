@@ -1,5 +1,5 @@
 <template>
-  <div v-if="contacts != null" class="container mx-auto">
+  <div class="container mx-auto">
     <div>
       <div class="overflow-x-auto relative md:mx-0 md:mb-0 mb-2 mt-6 mx-4">
         <h1 class="float-left text-2xl mt-2">Contacts</h1>
@@ -87,14 +87,6 @@
       </div>
     </div>
   </div>
-  <div v-else>
-    <div class="mt-8 justify-center items-center">
-      <h1 class="mt-8 text-center text-4xl">
-        We are currently working on this section!<br />
-        Sorry for the inconvinence.
-      </h1>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -110,6 +102,7 @@ export default {
 
   setup(props, { emit }) {
     const search = ref("");
+
     const onSubmit = async () => {
       let getContact = await axios.get(
         `https://ui-test.tshirtandsons.com/api/contacts?name=${search.value}`

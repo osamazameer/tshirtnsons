@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <TableView :companies="companies" />
+    <CompanyTable :companies="companies" />
   </div>
 </template>
 
 <script>
-import TableView from "@/components/TableView.vue";
+import CompanyTable from "@/components/CompanyTable.vue";
 import { onMounted, ref } from "vue";
 import axios from "axios";
 
 export default {
   components: {
-    TableView,
+    CompanyTable,
   },
 
   setup() {
@@ -19,7 +19,7 @@ export default {
     let companies = ref([]);
     const getCompanies = async () => {
       let res = await axios.get(
-        "https://ui-test.tshirtandsons.com/api/contacts"
+        "https://ui-test.tshirtandsons.com/api/companies"
       );
       companies.value = res.data.data;
       console.log("CHECK COMPANIES ==> ", res.data.data);
