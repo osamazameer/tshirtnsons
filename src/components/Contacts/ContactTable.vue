@@ -7,25 +7,29 @@
           <h1 class="float-left text-2xl mt-2">Contacts</h1>
         </div>
         <div v-else>
-          <h1 class="float-left text-2xl mt-2">{{ company.name }}</h1>
+          <h1 class="float-left text-2xl mt-2 md:block hidden">
+            {{ company.name }}
+          </h1>
         </div>
 
-        <!-- Add button -->
-        <router-link to="/add-contact" v-if="page == 'add-contact'">
-          <button
-            class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
-          >
-            Add Contact
-          </button>
-        </router-link>
+        <div>
+          <!-- Add button -->
+          <router-link to="/add-contact" v-if="page == 'add-contact'">
+            <button
+              class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
+            >
+              Add Contact
+            </button>
+          </router-link>
 
-        <router-link :to="`/add-company-contact/${company.id}`" v-else>
-          <button
-            class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
-          >
-            Add Contacts for {{ company.name }}
-          </button>
-        </router-link>
+          <router-link :to="`/add-company-contact/${company.id}`" v-else>
+            <button
+              class="bg-gray-500 mb-2 w- hover:bg-gray-500 md:w-auto float-right w-full text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
+            >
+              Add Contacts for {{ company.name }}
+            </button>
+          </router-link>
+        </div>
 
         <form @submit.prevent="onSubmit">
           <div class="">
