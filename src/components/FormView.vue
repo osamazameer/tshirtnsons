@@ -3,6 +3,7 @@
   <form class="w-full max-w-4xl m-auto pt-4" @submit.prevent="onSubmit">
     <div class="max-w-4xl bg-white py-2 px-5 m-auto w-full mt-10">
       <div class="text-3xl mb-6 text-center">
+        <div></div>
         {{ page ? page : "Add Contact" }}
       </div>
 
@@ -149,8 +150,8 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const id = route.params.id;
+    const company_id = route.params.id;
     const active = ref(false);
-
     let form = ref({
       first_name: "",
       last_name: "",
@@ -172,15 +173,30 @@ export default {
 
     const onSubmit = async () => {
       console.log("Form Values", form);
+
+      //Request for Edit page
       if (props.page == "Edit Contact") {
         await axios.put(
           `https://ui-test.tshirtandsons.com/api/contacts/${id}`,
           form.value
         );
-      } else {
+      }
+      //Request for Add Contact page
+      else if (props.page == "Add Contact") {
         await axios.post(
           "https://ui-test.tshirtandsons.com/api/contacts/",
           form.value
+        );
+      }
+      //Request for Add company contacts
+      else {
+        const payload = {
+          contacts: [form.value],
+        };
+        console.log("Payload", payload);
+        await axios.put(
+          `https://ui-test.tshirtandsons.com/api/companies/${company_id}/contacts`,
+          payload
         );
       }
       active.value = true;

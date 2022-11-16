@@ -1,5 +1,5 @@
 <template>
-  <FormView page="Add Contact" />
+  <FormView page="Add Company Contact" />
 </template>
 
 <script>

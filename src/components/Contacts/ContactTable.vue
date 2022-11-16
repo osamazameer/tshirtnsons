@@ -19,7 +19,7 @@
           </button>
         </router-link>
 
-        <router-link to="/add-contact" v-else>
+        <router-link :to="`/add-company-contact/${company.id}`" v-else>
           <button
             class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
           >
