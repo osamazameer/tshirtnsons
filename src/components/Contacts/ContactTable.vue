@@ -2,13 +2,28 @@
   <div class="container mx-auto">
     <div>
       <div class="overflow-x-auto relative md:mx-0 md:mb-0 mb-2 mt-6 mx-4">
-        <h1 class="float-left text-2xl mt-2">Contacts</h1>
+        <!-- Page Title According to the Page-->
+        <div v-if="page == 'add-contact'">
+          <h1 class="float-left text-2xl mt-2">Contacts</h1>
+        </div>
+        <div v-else>
+          <h1 class="float-left text-2xl mt-2">{{ company.name }}</h1>
+        </div>
 
-        <router-link to="/add-contact">
+        <!-- Add button -->
+        <router-link to="/add-contact" v-if="page == 'add-contact'">
           <button
             class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
           >
             Add Contact
+          </button>
+        </router-link>
+
+        <router-link to="/add-contact" v-else>
+          <button
+            class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
+          >
+            Add Contacts for {{ company.name }}
           </button>
         </router-link>
 
@@ -42,7 +57,7 @@
         </form>
       </div>
 
-      <div class="overflow-x-auto relative" v-if="contacts != []">
+      <div class="overflow-x-auto relative">
         <table
           class="w-full text-sm text-left text-black border-r-2 border-l-2 border-black dark:text-gray-400"
         >
@@ -87,9 +102,6 @@
           </tbody>
         </table>
       </div>
-      <div v-else>
-        <h1>No Contacts</h1>
-      </div>
     </div>
   </div>
 </template>
@@ -100,8 +112,9 @@ import axios from "axios";
 
 export default {
   props: {
-    // companies: Array,
+    company: Array,
     contacts: Array,
+    page: String,
   },
   emits: ["SearchedValue"],
 

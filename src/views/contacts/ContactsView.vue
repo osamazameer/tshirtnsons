@@ -6,6 +6,7 @@
         :contacts="filteredContacts"
         @SearchedValue="SearchedValue"
         @on-reset="handleReset"
+        page="add-contact"
       />
       <PaginateBar
         @pageSelect="handlePageChange"

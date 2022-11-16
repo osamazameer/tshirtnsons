@@ -49,14 +49,6 @@
                     View Contacts
                   </button>
                 </router-link>
-                <br />
-                <router-link :to="`/edit-contact/${company.id}`">
-                  <button
-                    class="bg-transparent text-xs w-28 hover:bg-gray-500 text-white-100 font-semibold hover:text-white py-2 px-2 border border-gray-500 hover:border-transparent rounded"
-                  >
-                    View Company
-                  </button>
-                </router-link>
               </td>
             </tr>
           </tbody>

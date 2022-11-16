@@ -2,20 +2,15 @@
   <div class="home">
     <ContactTable
       :contacts="filteredContacts"
+      :company="company"
       @SearchedValue="SearchedValue"
       @on-reset="handleReset"
     />
-    <!-- <PaginateBar
-        @pageSelect="handlePageChange"
-        :totalPages="totalPages"
-        :currentPage="currentPage"
-      /> -->
   </div>
 </template>
 
 <script>
 import ContactTable from "@/components/Contacts/ContactTable.vue";
-// import PaginateBar from "@/components/Common/PaginateBar.vue";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
@@ -23,7 +18,6 @@ import axios from "axios";
 export default {
   components: {
     ContactTable,
-    // PaginateBar,
   },
 
   setup() {
@@ -34,11 +28,14 @@ export default {
     const id = route.params.id;
 
     let contacts = ref([]);
+    let company = ref([]);
+
     const getCompanyContacts = async () => {
       let res = await axios.get(
         `https://ui-test.tshirtandsons.com/api/companies/${id}/contacts`
       );
       contacts.value = res.data.data.contacts;
+      company.value = res.data.data;
       filteredContacts.value = res.data.data.contacts;
     };
     onMounted(() => {
@@ -55,6 +52,7 @@ export default {
       handleReset,
       SearchedValue,
       filteredContacts,
+      company,
     };
   },
 };
