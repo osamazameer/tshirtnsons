@@ -4,14 +4,14 @@
   >
     <div class="flex flex-1 justify-between sm:hidden">
       <a
-        href="#"
-        class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        @click="prevPage"
+        class="relative inline-flex items-center cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
       >
         Previous
       </a>
       <a
-        href="#"
-        class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        @click="nextPage"
+        class="relative ml-3 cursor-pointer inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
       >
         Next
       </a>
@@ -133,7 +133,10 @@ export default {
     // const totalPages = ref("");
     // props.totalPage;
     function nextPage() {
-      emit("pageSelect", Number(props.currentPage + 1));
+      //if first page
+      if (props.currentPage == 0) {
+        emit("pageSelect", Number(props.currentPage + 2));
+      } else emit("pageSelect", Number(props.currentPage + 1));
     }
     function prevPage() {
       emit("pageSelect", Number(props.currentPage - 1));

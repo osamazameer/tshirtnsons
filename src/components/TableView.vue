@@ -1,23 +1,21 @@
 <template>
   <div v-if="contacts != null" class="container mx-auto">
     <div>
-      <div class="mt-4 overflow-x-auto relative">
-        <div class="">
-          <h1 class="float-left text-2xl mt-2">Contacts</h1>
+      <div class="overflow-x-auto relative md:mx-0 md:mb-0 mb-2 mt-6 mx-4">
+        <h1 class="float-left text-2xl mt-2">Contacts</h1>
 
-          <router-link to="/add-contact">
-            <button
-              class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
-            >
-              Add Contact
-            </button>
-          </router-link>
-        </div>
+        <router-link to="/add-contact">
+          <button
+            class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
+          >
+            Add Contact
+          </button>
+        </router-link>
 
         <form @submit.prevent="onSubmit">
-          <div class="mt-4">
+          <div class="">
             <input
-              class="border-solid border-gray-400 border-2 p-2 pl-4 md:text-xl w-full"
+              class="border-solid border-black outline-none md:border-b-0 border-2 p-2 pl-4 md:text-xl w-full"
               id="search"
               name="search"
               v-model="search"
@@ -42,6 +40,8 @@
             </button>
           </div>
         </form>
+      </div>
+      <div class="overflow-x-auto relative">
         <table
           class="w-full text-sm text-left text-black border-r-2 border-l-2 border-black dark:text-gray-400"
         >
