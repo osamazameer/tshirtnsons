@@ -189,7 +189,7 @@ export default {
         );
       }
       //Request for Add company contacts
-      else {
+      else if (props.page == "Add Company Contact") {
         const payload = {
           contacts: [form.value],
         };

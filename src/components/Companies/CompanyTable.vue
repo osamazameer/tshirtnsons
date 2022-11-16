@@ -2,15 +2,7 @@
   <div class="container mx-auto">
     <div>
       <div class="overflow-x-auto relative md:mx-0 md:mb-0 mb-2 mt-6 mx-4">
-        <h1 class="float-left text-2xl mt-2 mb-2">Companies</h1>
-
-        <!-- <router-link to="/add-contact">
-          <button
-            class="bg-gray-500 mb-2 hover:bg-gray-500 float-right text-white py-2 px-4 border-b-4 border-gray-600 hover:border-gray-500 rounded"
-          >
-            Add Company
-          </button>
-        </router-link> -->
+        <h1 class="text-center mx-auto text-3xl mt-2 mb-6">Companies</h1>
       </div>
       <div class="overflow-x-auto relative">
         <table

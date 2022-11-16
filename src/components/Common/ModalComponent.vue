@@ -26,18 +26,21 @@
           />
         </svg>
 
-        <h1 class="w-100 text-xl">
-          {{
-            page
-              ? "Contact Updated Successfully!"
-              : "Contact Created Successfully!"
-          }}
-        </h1>
+        <div v-if="page == 'Add Contact'">
+          <h1 class="w-100 text-xl">Added Contact Successfully!</h1>
+        </div>
+        <div v-if="page == 'Edit Contact'">
+          <h1 class="w-100 text-xl">Updated Contact Successfully!</h1>
+        </div>
+        <div v-if="page == 'Add Company Contact'">
+          <h1 class="w-100 text-xl">Added Contact Successfully!</h1>
+        </div>
+
         <router-link
           class="rounded bg-black text-white px-4 py-2 w-3/12 m-auto mb-2 mt-4"
           to="/contacts"
         >
-          Back
+          Okay
         </router-link>
       </div>
     </div>
